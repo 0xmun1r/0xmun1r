@@ -53,8 +53,11 @@ crtsh	🔍 Pure Bash subdomain recon using crt.sh
 📡 Connect With Me
 
 Telegram:  @0xmun1r
+
 GitHub:    github.com/0xmun1r
+
 Discord:   Coming soon...
+
 YouTube:   Coming soon...
 
 <p align="center">
