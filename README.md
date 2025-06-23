@@ -27,9 +27,9 @@
 🛠️ Featured Tools
 
 Tool	Description
-
+```diff
 crtsh	🔍 Pure Bash subdomain recon using crt.sh
-
+```
 🚩 Bug Bounty Platforms
 
 <p align="center">
