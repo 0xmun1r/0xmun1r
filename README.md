@@ -72,15 +72,14 @@ crtsh	🔍 Pure Bash subdomain recon using crt.sh
 </p>
 
 
-## 📡 Connect With Me
+## 🌐 Connect with me
 
-Telegram:  Coming Soon
+[![GitHub](https://img.shields.io/badge/GitHub-0×mun1r-181717?style=for-the-badge&logo=github)](https://github.com/0xmun1r)
+[![Facebook](https://img.shields.io/badge/Facebook-Page-blue?style=for-the-badge&logo=facebook)](https://facebook.com/0xmun1r)
+[![Telegram](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=for-the-badge&logo=telegram)](https://t.me/telegr_mun1r)
+[![YouTube](https://img.shields.io/badge/YouTube-Channel-FF0000?style=for-the-badge&logo=youtube)](https://youtube.com/@0xmun1r?si=BQwwz7HA2YfqKvaF)
 
-GitHub:    github.com/0xmun1r
 
-Discord:   Coming soon...
-
-YouTube:   Coming soon...
 
 <p align="center">
   <img src="https://media.giphy.com/media/3ohhwF34cGDoFFhRfy/giphy.gif" width="300" alt="Hacking terminal gif" />
