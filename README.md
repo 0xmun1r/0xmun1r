@@ -25,13 +25,18 @@
 + ⚙️ Building tools that find real-world bugs faster
 + 💣 Making the internet safer — one vulnerability at a time
 ```
-
 ## 🛠️ Featured Tools
 
-Tool	Description
-```diff
-crtsh	🔍 Pure Bash subdomain recon using crt.sh
-```
+A curated collection of powerful recon tools included in this repository:
+
+| 🔧 Tool       | 💬 Description |
+|--------------|----------------|
+| [**Subranger**](https://github.com/yourusername/Subranger) | ⚙️ Python-based subdomain enumerator with multiple data sources, silent mode, input list support, and installer script. |
+| [**IP.X**](https://github.com/yourusername/IP.X) | 🛡️ IP resolver that uncovers origin IP behind WAF/CDN using active + passive OSINT techniques with a cyber aesthetic interface. |
+| [**crtsh**](https://github.com/yourusername/crtsh) | 🔍 Pure Bash tool for subdomain reconnaissance using `crt.sh` – lightweight, fast, and no API keys needed. |
+
+---
+
 ## 🚩 Bug Bounty Platforms
 
 <p align="center">
