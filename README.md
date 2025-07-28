@@ -81,7 +81,25 @@ crtsh	🔍 Pure Bash subdomain recon using crt.sh
 [![Telegram](https://img.shields.io/badge/Telegram-Channel-2CA5E0?style=for-the-badge&logo=telegram)](https://t.me/telegr_mun1r)
 [![YouTube](https://img.shields.io/badge/YouTube-Channel-FF0000?style=for-the-badge&logo=youtube)](https://youtube.com/@0xmun1r?si=BQwwz7HA2YfqKvaF)
 
+---
+## 🧠 Stay Ahead with HackExploit Weekly
 
+🎯 **Hack | Learn | Dominate**  
+Join 0xmun1r’s free newsletter crafted for ethical hackers, recon nerds & bug bounty hunters.
+
+👉 [Subscribe now on Substack](https://hackexploit.substack.com)
+
+💥 What you'll get every week:
+- 🕵️‍♂️ Real-world Recon + OSINT Tactics
+- ⚔️ Bug Bounty Automation Tips
+- 🧠 Deep Dives into Tools like IP.X
+- 🧪 Zero-day Research & Practical Exploits
+
+[![Subscribe Now](https://img.shields.io/badge/Subscribe--Now-HackExploit_Weekly-orange?style=for-the-badge&logo=substack)](https://hackexploit.substack.com)
+
+> Powered by **HackExploit.S** | Curated by `0xmun1r` | Always Free 🚀
+
+---
 
 <p align="center">
   <img src="https://media.giphy.com/media/3ohhwF34cGDoFFhRfy/giphy.gif" width="300" alt="Hacking terminal gif" />
