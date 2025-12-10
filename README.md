@@ -6,7 +6,7 @@
   <img src="logo.svg" width="100%" />
 </p>                                                                    
 
-<p align="center"><b>「 Bug Bounty | Ethical Hacking | Cybersecurity 」</b></p>
+
 
 ---
 
