@@ -1,28 +1,19 @@
-<svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg">
+<svg viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <!-- Advanced glitch filter -->
+    <!-- Glitch filter -->
     <filter id="glitch">
-      <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="3" result="noise">
-        <animate attributeName="baseFrequency" values="0.01;0.05;0.01" dur="0.2s" repeatCount="indefinite"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="2" result="noise">
+        <animate attributeName="baseFrequency" values="0.02;0.06;0.02" dur="0.3s" repeatCount="indefinite"/>
       </feTurbulence>
-      <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" xChannelSelector="R" yChannelSelector="B">
-        <animate attributeName="scale" values="0;15;0;8;0" dur="1.5s" repeatCount="indefinite"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R" yChannelSelector="B">
+        <animate attributeName="scale" values="0;10;0;5;0" dur="2s" repeatCount="indefinite"/>
       </feDisplacementMap>
     </filter>
     
-    <!-- RGB split glitch -->
-    <filter id="rgbSplit">
-      <feOffset in="SourceGraphic" dx="3" dy="0" result="r"/>
-      <feOffset in="SourceGraphic" dx="-3" dy="0" result="b"/>
-      <feBlend mode="screen" in="r" in2="SourceGraphic"/>
-      <feBlend mode="screen" in2="b"/>
-    </filter>
-    
-    <!-- Intense neon glow -->
+    <!-- Neon glow -->
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
       <feMerge>
-        <feMergeNode in="coloredBlur"/>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="coloredBlur"/>
@@ -30,11 +21,10 @@
       </feMerge>
     </filter>
     
-    <!-- Stronger glow for special effects -->
+    <!-- Strong glow -->
     <filter id="strongGlow">
-      <feGaussianBlur stdDeviation="6" result="coloredBlur"/>
+      <feGaussianBlur stdDeviation="8" result="coloredBlur"/>
       <feMerge>
-        <feMergeNode in="coloredBlur"/>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="coloredBlur"/>
         <feMergeNode in="coloredBlur"/>
@@ -43,294 +33,193 @@
       </feMerge>
     </filter>
     
-    <!-- Animated gradient -->
-    <linearGradient id="textGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#00ff41">
-        <animate attributeName="stop-color" values="#00ff41;#00ffff;#ff00ff;#00ff41" dur="4s" repeatCount="indefinite"/>
+    <!-- Animated gradient for main text -->
+    <linearGradient id="bugGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#ff0000">
+        <animate attributeName="stop-color" values="#ff0000;#ff00ff;#00ff41;#ff0000" dur="3s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="50%" style="stop-color:#00ffff">
-        <animate attributeName="stop-color" values="#00ffff;#ff00ff;#00ff41;#00ffff" dur="4s" repeatCount="indefinite"/>
+      <stop offset="50%" style="stop-color:#ff00ff">
+        <animate attributeName="stop-color" values="#ff00ff;#00ff41;#ff0000;#ff00ff" dur="3s" repeatCount="indefinite"/>
       </stop>
-      <stop offset="100%" style="stop-color:#ff00ff">
-        <animate attributeName="stop-color" values="#ff00ff;#00ff41;#00ffff;#ff00ff" dur="4s" repeatCount="indefinite"/>
+      <stop offset="100%" style="stop-color:#00ff41">
+        <animate attributeName="stop-color" values="#00ff41;#ff0000;#ff00ff;#00ff41" dur="3s" repeatCount="indefinite"/>
       </stop>
     </linearGradient>
     
-    <!-- Circuit pattern -->
-    <pattern id="circuit" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-      <path d="M0 20 L20 20 M20 20 L20 40 M20 40 L40 40 M40 0 L40 20 M40 20 L60 20 M60 20 L60 40 M40 60 L40 80 M20 60 L40 60" 
-            stroke="#00ff41" stroke-width="0.5" fill="none" opacity="0.3"/>
-      <circle cx="20" cy="20" r="2" fill="#00ff41" opacity="0.5"/>
-      <circle cx="40" cy="40" r="2" fill="#00ffff" opacity="0.5"/>
-      <circle cx="60" cy="20" r="2" fill="#ff00ff" opacity="0.5"/>
-    </pattern>
+    <!-- Terminal screen gradient -->
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:0.95"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.98"/>
+    </linearGradient>
     
-    <!-- Grid pattern -->
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.1"/>
+    <!-- Scan line pattern -->
+    <pattern id="scanlines" width="100%" height="4" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="100%" y2="0" stroke="#00ff41" stroke-width="0.5" opacity="0.03"/>
     </pattern>
-    
-    <!-- Hexagon mask -->
-    <clipPath id="hexClip">
-      <path d="M 300 100 L 450 50 L 700 50 L 850 100 L 850 400 L 700 450 L 450 450 L 300 400 Z"/>
-    </clipPath>
   </defs>
   
-  <!-- Transparent background - removed solid fill -->
-  <rect width="1000" height="500" fill="url(#grid)"/>
-  <rect width="1000" height="500" fill="url(#circuit)" opacity="0.4">
-    <animate attributeName="opacity" values="0.3;0.5;0.3" dur="5s" repeatCount="indefinite"/>
-  </rect>
-  
-  <!-- Animated radar sweep -->
-  <g opacity="0.2">
-    <line x1="500" y1="250" x2="500" y2="0" stroke="#00ff41" stroke-width="2" transform-origin="500 250">
-      <animateTransform attributeName="transform" type="rotate" values="0 500 250;360 500 250" dur="4s" repeatCount="indefinite"/>
-    </line>
-  </g>
-  
-  <!-- Multiple scan lines -->
-  <rect width="1000" height="2" fill="#00ff41" opacity="0.6">
-    <animate attributeName="y" values="-5;505" dur="2s" repeatCount="indefinite"/>
-  </rect>
-  <rect width="1000" height="1" fill="#00ffff" opacity="0.4">
-    <animate attributeName="y" values="505;-5" dur="3.5s" repeatCount="indefinite"/>
-  </rect>
-  <rect width="1000" height="3" fill="#ff00ff" opacity="0.3">
-    <animate attributeName="y" values="-5;505" dur="2.8s" repeatCount="indefinite"/>
-  </rect>
-  
-  <!-- Outer hexagon frame -->
-  <g filter="url(#strongGlow)">
-    <path d="M 280 90 L 450 35 L 720 35 L 870 90 L 870 410 L 720 465 L 450 465 L 280 410 Z" 
-          fill="none" stroke="#00ff41" stroke-width="2" opacity="0.4" stroke-dasharray="10 5">
-      <animate attributeName="stroke-dashoffset" values="0;1000" dur="20s" repeatCount="indefinite"/>
-    </path>
-  </g>
-  
-  <!-- Main hexagon frame -->
-  <g filter="url(#glow)">
-    <path d="M 300 100 L 450 50 L 700 50 L 850 100 L 850 400 L 700 450 L 450 450 L 300 400 Z" 
-          fill="none" stroke="#00ffff" stroke-width="3" opacity="0.8">
-      <animate attributeName="stroke-dasharray" values="0 3000;3000 0;0 3000" dur="8s" repeatCount="indefinite"/>
-      <animate attributeName="stroke" values="#00ffff;#00ff41;#ff00ff;#00ffff" dur="6s" repeatCount="indefinite"/>
-    </path>
-  </g>
-  
-  <!-- Inner hexagon -->
-  <path d="M 320 110 L 450 70 L 680 70 L 830 110 L 830 390 L 680 430 L 450 430 L 320 390 Z" 
-        fill="none" stroke="#ff00ff" stroke-width="1" opacity="0.5" stroke-dasharray="5 5">
-    <animate attributeName="stroke-dashoffset" values="0;-1000" dur="15s" repeatCount="indefinite"/>
-  </path>
-  
-  <!-- Corner brackets with HUD elements -->
-  <g stroke="#00ff41" stroke-width="4" fill="none" filter="url(#glow)">
-    <path d="M 270 110 L 270 80 L 300 80">
-      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.2s" repeatCount="indefinite"/>
-    </path>
-    <path d="M 880 110 L 880 80 L 850 80">
-      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.2s" begin="0.3s" repeatCount="indefinite"/>
-    </path>
-    <path d="M 270 390 L 270 420 L 300 420">
-      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.2s" begin="0.6s" repeatCount="indefinite"/>
-    </path>
-    <path d="M 880 390 L 880 420 L 850 420">
-      <animate attributeName="opacity" values="0.6;1;0.6" dur="1.2s" begin="0.9s" repeatCount="indefinite"/>
-    </path>
-  </g>
-  
-  <!-- Crosshair -->
-  <g stroke="#ff00ff" stroke-width="1" opacity="0.5" filter="url(#glow)">
-    <line x1="500" y1="240" x2="500" y2="260"/>
-    <line x1="490" y1="250" x2="510" y2="250"/>
-    <circle cx="500" cy="250" r="30" fill="none">
-      <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+  <!-- Terminal Window -->
+  <g id="terminal">
+    <!-- Window shadow -->
+    <rect x="55" y="55" width="1090" height="590" fill="#000000" opacity="0.3" rx="10"/>
+    
+    <!-- Main terminal window -->
+    <rect x="50" y="50" width="1090" height="590" fill="url(#screenGrad)" stroke="#00ff41" stroke-width="2" rx="10" filter="url(#glow)"/>
+    
+    <!-- Scanlines overlay -->
+    <rect x="50" y="50" width="1090" height="590" fill="url(#scanlines)" rx="10" opacity="0.4"/>
+    
+    <!-- Terminal header bar -->
+    <rect x="50" y="50" width="1090" height="40" fill="#1a1a1a" rx="10"/>
+    <rect x="50" y="70" width="1090" height="20" fill="#1a1a1a"/>
+    
+    <!-- Window control buttons -->
+    <circle cx="75" cy="70" r="8" fill="#ff5555" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" repeatCount="indefinite"/>
     </circle>
-    <circle cx="500" cy="250" r="50" fill="none" opacity="0.3">
-      <animate attributeName="r" values="50;55;50" dur="2.5s" repeatCount="indefinite"/>
+    <circle cx="100" cy="70" r="8" fill="#ffff55" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" begin="0.5s" repeatCount="indefinite"/>
     </circle>
-  </g>
-  
-  <!-- Terminal prefix -->
-  <g filter="url(#glow)">
-    <text x="280" y="220" font-family="'Courier New', monospace" font-size="28" 
-          fill="#00ff41" opacity="0.9">
-      root@sec:~$
-      <animate attributeName="opacity" values="0.9;1;0.9" dur="3s" repeatCount="indefinite"/>
-    </text>
-  </g>
-  
-  <!-- Main glitch text layers -->
-  <g>
-    <!-- Red channel glitch -->
-    <text x="575" y="260" font-family="'Courier New', monospace" font-size="82" font-weight="bold" 
-          fill="#ff0000" text-anchor="middle" opacity="0.5">
-      0xmun1r
-      <animate attributeName="x" values="575;578;572;575" dur="0.08s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.5;0.7;0.5" dur="0.15s" repeatCount="indefinite"/>
+    <circle cx="125" cy="70" r="8" fill="#55ff55" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;1;0.8" dur="3s" begin="1s" repeatCount="indefinite"/>
+    </circle>
+    
+    <!-- Terminal title -->
+    <text x="600" y="75" font-family="'Courier New', monospace" font-size="16" fill="#00ff41" text-anchor="middle" opacity="0.9">
+      root@kali:~/recon/bug-hunting
     </text>
     
-    <!-- Cyan channel glitch -->
-    <text x="575" y="260" font-family="'Courier New', monospace" font-size="82" font-weight="bold" 
-          fill="#00ffff" text-anchor="middle" opacity="0.5">
-      0xmun1r
-      <animate attributeName="x" values="575;572;578;575" dur="0.1s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.5;0.8;0.5" dur="0.2s" repeatCount="indefinite"/>
-    </text>
-    
-    <!-- Main text with gradient -->
-    <text x="575" y="260" font-family="'Courier New', monospace" font-size="82" font-weight="bold" 
-          fill="url(#textGrad)" text-anchor="middle" filter="url(#strongGlow)">
-      0xmun1r
-      <animate attributeName="opacity" values="1;0.97;1" dur="0.1s" repeatCount="indefinite"/>
-    </text>
+    <!-- Terminal content area -->
+    <g id="terminalContent">
+      <!-- Command prompt lines -->
+      <text x="80" y="130" font-family="'Courier New', monospace" font-size="16" fill="#00ff41" opacity="0.7">
+        ┌──(root㉿kali)-[~/recon]
+      </text>
+      <text x="80" y="155" font-family="'Courier New', monospace" font-size="16" fill="#00ff41" opacity="0.7">
+        └─$ nmap -sV -sC --script vuln target.com
+      </text>
+      
+      <!-- Scanning output -->
+      <text x="80" y="185" font-family="'Courier New', monospace" font-size="14" fill="#888888" opacity="0.6">
+        <tspan x="80" dy="0">Starting Nmap scan...</tspan>
+        <tspan x="80" dy="20">Scanning 1000 ports...</tspan>
+        <tspan x="80" dy="20">Discovered open port 80/tcp</tspan>
+        <tspan x="80" dy="20">Discovered open port 443/tcp</tspan>
+        <tspan x="80" dy="20">Running vulnerability scripts...</tspan>
+      </text>
+      
+      <!-- Bug found alert -->
+      <g transform="translate(80, 320)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="16" fill="#ff0000" filter="url(#glow)">
+          <tspan x="0" dy="0">[!] CRITICAL VULNERABILITY DETECTED!</tspan>
+          <animate attributeName="opacity" values="0.8;1;0.8" dur="1s" repeatCount="indefinite"/>
+        </text>
+        <text x="0" y="25" font-family="'Courier New', monospace" font-size="14" fill="#ffff00" opacity="0.9">
+          <tspan x="0" dy="0">[+] SQL Injection found in login form</tspan>
+        </text>
+        <text x="0" y="48" font-family="'Courier New', monospace" font-size="14" fill="#ffff00" opacity="0.9">
+          <tspan x="0" dy="0">[+] XSS vulnerability in search parameter</tspan>
+        </text>
+        <text x="0" y="71" font-family="'Courier New', monospace" font-size="14" fill="#ffff00" opacity="0.9">
+          <tspan x="0" dy="0">[+] Directory traversal exposed</tspan>
+        </text>
+      </g>
+      
+      <!-- Bug hunter signature -->
+      <g transform="translate(80, 420)">
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="16" fill="#00ffff" opacity="0.8">
+          <tspan x="0" dy="0">═══════════════════════════════════════════</tspan>
+        </text>
+        <text x="0" y="25" font-family="'Courier New', monospace" font-size="14" fill="#888888" opacity="0.7">
+          <tspan x="0" dy="0">Report generated by:</tspan>
+        </text>
+      </g>
+      
+      <!-- MAIN LOGO - 0xmun1r (BIGGER and PROMINENT) -->
+      <g transform="translate(600, 520)">
+        <!-- Glitch background layers -->
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="110" font-weight="bold" 
+              fill="#ff0000" text-anchor="middle" opacity="0.4">
+          0xmun1r
+          <animate attributeName="x" values="0;4;-4;0" dur="0.1s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0.6;0.4" dur="0.2s" repeatCount="indefinite"/>
+        </text>
+        
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="110" font-weight="bold" 
+              fill="#00ffff" text-anchor="middle" opacity="0.4">
+          0xmun1r
+          <animate attributeName="x" values="0;-4;4;0" dur="0.12s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.4;0.7;0.4" dur="0.25s" repeatCount="indefinite"/>
+        </text>
+        
+        <!-- Main text with animated gradient -->
+        <text x="0" y="0" font-family="'Courier New', monospace" font-size="110" font-weight="bold" 
+              fill="url(#bugGrad)" text-anchor="middle" filter="url(#strongGlow)">
+          0xmun1r
+          <animate attributeName="opacity" values="1;0.95;1" dur="0.15s" repeatCount="indefinite"/>
+        </text>
+      </g>
+      
+      <!-- Blinking cursor after logo -->
+      <rect x="880" y="480" width="15" height="70" fill="#00ff41">
+        <animate attributeName="opacity" values="0;1;0" dur="0.8s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Bug hunter tagline -->
+      <text x="600" y="575" font-family="'Courier New', monospace" font-size="20" 
+            fill="#00ff41" text-anchor="middle" opacity="0.8" filter="url(#glow)">
+        [ SECURITY RESEARCHER | BUG HUNTER | ETHICAL HACKER]
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </text>
+      
+      <!-- Bottom command prompt -->
+      <text x="80" y="615" font-family="'Courier New', monospace" font-size="16" fill="#00ff41" opacity="0.7">
+        ┌──(root㉿kali)-[~/recon]
+      </text>
+      <text x="80" y="640" font-family="'Courier New', monospace" font-size="16" fill="#00ff41" opacity="0.9">
+        └─$ <tspan fill="#ffffff">█</tspan>
+        <animate attributeName="opacity" values="0.9;1;0.9" dur="1s" repeatCount="indefinite"/>
+      </text>
+    </g>
   </g>
   
-  <!-- Typing cursor -->
-  <rect x="750" y="225" width="12" height="55" fill="#00ff41" filter="url(#glow)">
-    <animate attributeName="opacity" values="0;1;0" dur="0.7s" repeatCount="indefinite"/>
+  <!-- Animated scan line -->
+  <rect x="50" y="50" width="1090" height="3" fill="#00ff41" opacity="0.5" filter="url(#glow)">
+    <animate attributeName="y" values="50;640;50" dur="4s" repeatCount="indefinite"/>
   </rect>
   
-  <!-- Subtitle with typewriter effect -->
-  <g filter="url(#glow)">
-    <text x="575" y="310" font-family="'Courier New', monospace" font-size="16" 
-          fill="#00ffff" text-anchor="middle" opacity="0.8">
-      [ BUG HUNTER • PENTESTER • Life Long Learner]
-      <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
-    </text>
-  </g>
-  
-  <!-- Status line -->
-  <g filter="url(#glow)">
-    <text x="575" y="340" font-family="'Courier New', monospace" font-size="14" 
-          fill="#00ff41" text-anchor="middle" opacity="0.7">
-      &gt;&gt; INITIALIZING SECURITY PROTOCOLS...
-      <animate attributeName="opacity" values="0.7;1;0.7" dur="1.5s" repeatCount="indefinite"/>
-    </text>
-  </g>
-  
-  <!-- Digital rain effect - multiple columns -->
-  <g opacity="0.4" font-family="'Courier New', monospace" font-size="14" fill="#00ff41">
-    <text x="50" y="0">101101
-      <animate attributeName="y" values="-30;530" dur="7s" repeatCount="indefinite"/>
-    </text>
-    <text x="120" y="-80">110010
-      <animate attributeName="y" values="-110;530" dur="9s" repeatCount="indefinite"/>
-    </text>
-    <text x="190" y="-150">010110
-      <animate attributeName="y" values="-180;530" dur="6s" repeatCount="indefinite"/>
-    </text>
-    <text x="850" y="-50">100111
-      <animate attributeName="y" values="-80;530" dur="8s" repeatCount="indefinite"/>
-    </text>
-    <text x="920" y="-120">011010
-      <animate attributeName="y" values="-150;530" dur="10s" repeatCount="indefinite"/>
-    </text>
-  </g>
-  
-  <!-- Glitch rectangles -->
-  <rect x="250" y="200" width="30" height="4" fill="#ff00ff" opacity="0">
-    <animate attributeName="opacity" values="0;0.8;0;0;0;0" dur="2s" repeatCount="indefinite"/>
-    <animate attributeName="x" values="250;245;255;250" dur="0.1s" repeatCount="indefinite"/>
-  </rect>
-  <rect x="870" y="300" width="25" height="3" fill="#00ffff" opacity="0">
-    <animate attributeName="opacity" values="0;0;0.8;0;0;0" dur="2s" begin="0.8s" repeatCount="indefinite"/>
-    <animate attributeName="x" values="870;875;865;870" dur="0.1s" repeatCount="indefinite"/>
-  </rect>
-  <rect x="280" y="150" width="20" height="5" fill="#00ff41" opacity="0">
-    <animate attributeName="opacity" values="0;0;0;0.8;0;0" dur="2s" begin="1.5s" repeatCount="indefinite"/>
-    <animate attributeName="x" values="280;283;277;280" dur="0.1s" repeatCount="indefinite"/>
-  </rect>
-  
-  <!-- Animated particles -->
-  <circle r="3" fill="#00ffff" filter="url(#strongGlow)">
-    <animateMotion path="M 300 250 Q 400 150 575 250 T 850 250" dur="3s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+  <!-- Digital particles -->
+  <circle r="3" fill="#00ff41" filter="url(#glow)" opacity="0">
+    <animateMotion path="M 100 200 Q 300 100 600 300 T 1100 400" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.8;0" dur="5s" repeatCount="indefinite"/>
   </circle>
-  <circle r="3" fill="#ff00ff" filter="url(#strongGlow)">
-    <animateMotion path="M 850 250 Q 700 350 575 250 T 300 250" dur="4s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0;1;0" dur="4s" repeatCount="indefinite"/>
-  </circle>
-  <circle r="2" fill="#00ff41" filter="url(#glow)">
-    <animateMotion path="M 575 100 L 575 400" dur="2.5s" repeatCount="indefinite"/>
-    <animate attributeName="opacity" values="0;1;0" dur="2.5s" repeatCount="indefinite"/>
+  
+  <circle r="2" fill="#ff00ff" filter="url(#glow)" opacity="0">
+    <animateMotion path="M 1100 250 Q 800 350 600 250 T 100 300" dur="6s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0;0.8;0" dur="6s" repeatCount="indefinite"/>
   </circle>
   
-  <!-- System indicators -->
-  <g transform="translate(320, 380)">
-    <rect x="-5" y="-8" width="120" height="20" fill="#000000" opacity="0.7"/>
-    <circle cx="0" cy="0" r="5" fill="#00ff41" filter="url(#glow)">
-      <animate attributeName="opacity" values="1;0.4;1" dur="0.8s" repeatCount="indefinite"/>
-    </circle>
-    <text x="12" y="5" font-family="'Courier New', monospace" font-size="13" fill="#00ff41" opacity="0.9">
-      RECON: ACTIVE
-    </text>
-  </g>
+  <!-- Glitch rectangles outside terminal -->
+  <rect x="40" y="200" width="25" height="4" fill="#ff00ff" opacity="0">
+    <animate attributeName="opacity" values="0;0.8;0;0;0" dur="3s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="40;35;45;40" dur="0.1s" repeatCount="indefinite"/>
+  </rect>
   
-  <g transform="translate(680, 380)">
-    <rect x="-5" y="-8" width="130" height="20" fill="#000000" opacity="0.7"/>
-    <circle cx="0" cy="0" r="5" fill="#ff00ff" filter="url(#glow)">
-      <animate attributeName="opacity" values="1;0.4;1" dur="0.6s" repeatCount="indefinite"/>
-    </circle>
-    <text x="12" y="5" font-family="'Courier New', monospace" font-size="13" fill="#ff00ff" opacity="0.9">
-      EXPLOIT: READY
-    </text>
-  </g>
+  <rect x="1140" y="400" width="20" height="3" fill="#00ffff" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.8;0;0" dur="3s" begin="1.2s" repeatCount="indefinite"/>
+    <animate attributeName="x" values="1140;1145;1135;1140" dur="0.1s" repeatCount="indefinite"/>
+  </rect>
   
-  <g transform="translate(500, 410)">
-    <rect x="-5" y="-8" width="140" height="20" fill="#000000" opacity="0.7"/>
-    <circle cx="0" cy="0" r="5" fill="#00ffff" filter="url(#glow)">
-      <animate attributeName="opacity" values="1;0.4;1" dur="1s" repeatCount="indefinite"/>
-    </circle>
-    <text x="12" y="5" font-family="'Courier New', monospace" font-size="13" fill="#00ffff" opacity="0.9">
-      TOOLS: DEPLOYED
+  <!-- Code matrix background -->
+  <g opacity="0.15" font-family="'Courier New', monospace" font-size="12" fill="#00ff41">
+    <text x="20" y="0">10110101
+      <animate attributeName="y" values="-30;730" dur="12s" repeatCount="indefinite"/>
     </text>
-  </g>
-  
-  <!-- Progress/loading bars -->
-  <g transform="translate(320, 120)">
-    <rect x="0" y="0" width="360" height="6" fill="none" stroke="#00ff41" stroke-width="1" opacity="0.5"/>
-    <rect x="0" y="0" width="0" height="6" fill="#00ff41" opacity="0.8" filter="url(#glow)">
-      <animate attributeName="width" values="0;360;0" dur="4s" repeatCount="indefinite"/>
-    </rect>
-    <text x="180" y="-5" font-family="'Courier New', monospace" font-size="10" fill="#00ff41" text-anchor="middle" opacity="0.7">
-      SCANNING NETWORK...
+    <text x="1150" y="-100">01001011
+      <animate attributeName="y" values="-130;730" dur="15s" repeatCount="indefinite"/>
     </text>
-  </g>
-  
-  <!-- Code snippets floating -->
-  <g opacity="0.3" font-family="'Courier New', monospace" font-size="11" fill="#00ffff">
-    <text x="100" y="400">nmap -sV -p-
-      <animate attributeName="opacity" values="0;0.5;0" dur="6s" repeatCount="indefinite"/>
-    </text>
-    <text x="800" y="120">curl -X POST
-      <animate attributeName="opacity" values="0;0.5;0" dur="7s" begin="2s" repeatCount="indefinite"/>
-    </text>
-    <text x="100" y="100">sqlmap --dbs
-      <animate attributeName="opacity" values="0;0.5;0" dur="5s" begin="1s" repeatCount="indefinite"/>
-    </text>
-  </g>
-  
-  <!-- Target reticle animation -->
-  <g opacity="0.3" stroke="#ff00ff" stroke-width="1" fill="none">
-    <circle cx="200" cy="150" r="15">
-      <animate attributeName="r" values="15;20;15" dur="2s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2s" repeatCount="indefinite"/>
-    </circle>
-    <circle cx="800" cy="350" r="12">
-      <animate attributeName="r" values="12;17;12" dur="2.5s" repeatCount="indefinite"/>
-      <animate attributeName="opacity" values="0.3;0.6;0.3" dur="2.5s" repeatCount="indefinite"/>
-    </circle>
-  </g>
-  
-  <!-- Terminal window header -->
-  <g transform="translate(250, 55)">
-    <rect width="500" height="20" fill="#0a0e27" opacity="0.8"/>
-    <circle cx="10" cy="10" r="4" fill="#ff0000" opacity="0.6"/>
-    <circle cx="25" cy="10" r="4" fill="#ffff00" opacity="0.6"/>
-    <circle cx="40" cy="10" r="4" fill="#00ff41" opacity="0.6"/>
-    <text x="60" y="14" font-family="'Courier New', monospace" font-size="10" fill="#00ff41" opacity="0.7">
-      root@0xmun1r:/tools/recon#
+    <text x="25" y="-200">11010010
+      <animate attributeName="y" values="-230;730" dur="10s" repeatCount="indefinite"/>
     </text>
   </g>
 </svg>
