@@ -195,7 +195,7 @@
   <g filter="url(#glow)">
     <text x="575" y="310" font-family="'Courier New', monospace" font-size="16" 
           fill="#00ffff" text-anchor="middle" opacity="0.8">
-      [ BUG HUNTER • RECON SPECIALIST • PENTESTER ]
+      [ BUG HUNTER • PENTESTER • Life Long Learner]
       <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
     </text>
   </g>
